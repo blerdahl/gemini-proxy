@@ -1,7 +1,7 @@
 const http = require("http");
 const https = require("https");
 
-const GEMINI_API_KEY = "AIzaSyD2wVvHTfYiZSpGaZCAcW1eNkq40WYg77g";
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
 const PORT = 3001;
 
 const server = http.createServer((req, res) => {
