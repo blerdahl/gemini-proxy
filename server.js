@@ -2,7 +2,7 @@ const http = require("http");
 const https = require("https");
 
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY || "";
-const PORT = 3001;
+const PORT = process.env.PORT || 3001;
 
 const server = http.createServer((req, res) => {
   // Allow requests from anywhere (Claude artifact, localhost, etc.)
@@ -75,7 +75,7 @@ const server = http.createServer((req, res) => {
   });
 });
 
-server.listen(PORT, () => {
-  console.log(`✅ Gemini proxy running at http://localhost:${PORT}`);
-  console.log(`   POST http://localhost:${PORT}/gemini  { "prompt": "..." }`);
+server.listen(PORT, "0.0.0.0", () => {
+  console.log(`✅ Gemini proxy running on port ${PORT}`);
+  console.log(`   GEMINI_API_KEY set: ${!!GEMINI_API_KEY}`);
 });
